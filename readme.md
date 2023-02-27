@@ -1,0 +1,1 @@
+- Debemos instalar yarn de forma global y ejecutar yarn --version
