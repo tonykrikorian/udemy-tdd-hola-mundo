@@ -15,5 +15,8 @@
     "axios": "^1.3.4",
     "express": "^4.18.2",
     "git-cz": "^4.9.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
