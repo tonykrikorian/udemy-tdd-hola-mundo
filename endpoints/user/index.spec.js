@@ -53,5 +53,29 @@ describe("Endpoints", () => {
         ]);
       });
     });
+
+    describe("put", () => {
+      it("Test update and user", async () => {
+        const req = {
+          body: "request body",
+          params: {
+            id: 12,
+          },
+        };
+
+        const res = {
+          sendStatus: jest.fn(),
+        };
+
+        const axios = {
+          put: jest.fn().mockResolvedValue({ data: 1 }),
+        };
+
+        await handlers({ axios }).put(req, res);
+        expect(axios.put.mock.calls).toEqual([
+          ["https://jsonplaceholder.typicode.com/users/12", "request body"],
+        ]);
+      });
+    });
   });
 });
