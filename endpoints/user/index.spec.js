@@ -7,7 +7,7 @@ describe("Endpoints", () => {
         //Para construir un mock de jest hacemos
         //Hacemos un mock del handler para el metodo get y que devuelva el objeto {data:1}
         const axios = {
-          get: jest.fn().mockResolvedValue({ data: 1 }),
+          get: jest.fn().mockResolvedValue({ data: { name: "Tony" } }),
         };
 
         //Debemos llamar handlers, inyectamos axios, este recibe los objetos req, res, debemos construir mocks para ellos
@@ -24,6 +24,9 @@ describe("Endpoints", () => {
         //console.log(res.status.mock.calls);
 
         expect(res.status.mock.calls).toEqual([[200]]);
+
+        console.log(res.send.mock.calls);
+        expect(res.send.mock.calls).toEqual([[{ name: "Tony" }]]);
       });
     });
   });
