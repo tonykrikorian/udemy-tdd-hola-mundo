@@ -1,3 +1,4 @@
+const exp = require("constants");
 const handlers = require("./index");
 
 describe("Endpoints", () => {
@@ -74,6 +75,29 @@ describe("Endpoints", () => {
         await handlers({ axios }).put(req, res);
         expect(axios.put.mock.calls).toEqual([
           ["https://jsonplaceholder.typicode.com/users/12", "request body"],
+        ]);
+      });
+    });
+    describe("delete", () => {
+      it("delete a resource", async () => {
+        const req = {
+          params: {
+            id: 15,
+          },
+        };
+
+        const res = {
+          sendStatus: jest.fn(),
+        };
+
+        const axios = {
+          delete: jest.fn().mockResolvedValue({ data: 1 }),
+        };
+
+        await handlers({ axios }).delete(req, res);
+        expect(res.sendStatus.mock.calls).toEqual([[204]]);
+        expect(axios.delete.mock.calls).toEqual([
+          ["https://jsonplaceholder.typicode.com/users/15"],
         ]);
       });
     });
