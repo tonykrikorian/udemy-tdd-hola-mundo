@@ -1,6 +1,7 @@
+const users = require("./user");
+const posts = require("./posts");
 
-const users = require('./user')
-
-module.exports ={
-    users
-}
+module.exports = {
+  users,
+  posts,
+};
